@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffic Dashboard — SaaS Founder's Claude Pack</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --bg:#0f172a; --bg2:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --green:#4ade80; --yellow:#facc15; --red:#f87171; --border:#334155; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; padding:2rem; }
+  .container { max-width:1000px; margin:0 auto; }
+  h1 { font-size:1.8rem; margin-bottom:.25rem; }
+  h2 { font-size:1.1rem; color:var(--muted); margin-bottom:1.5rem; font-weight:400; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .kpi { background:var(--bg2); border-radius:8px; padding:1.25rem; border:1px solid var(--border); }
+  .kpi-label { font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.5rem; }
+  .kpi-value { font-size:2rem; font-weight:700; }
+  .kpi-sub { font-size:.75rem; color:var(--muted); margin-top:.25rem; }
+  .section { background:var(--bg2); border-radius:8px; padding:1.25rem; margin-bottom:1rem; border:1px solid var(--border); }
+  .section h3 { font-size:.9rem; color:var(--accent); margin-bottom:1rem; text-transform:uppercase; letter-spacing:.05em; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:.5rem .75rem; font-size:.85rem; border-bottom:1px solid var(--border); }
+  th { color:var(--muted); font-weight:600; }
+  .bar-wrap { display:flex; align-items:center; gap:.5rem; }
+  .bar { height:6px; background:var(--accent); border-radius:3px; min-width:2px; }
+  .bar-num { font-size:.8rem; color:var(--muted); min-width:2.5rem; text-align:right; }
+  .empty { color:var(--muted); font-style:italic; padding:1rem 0; text-align:center; }
+  .day-chart { display:flex; align-items:flex-end; gap:4px; height:120px; }
+  .day-bar { flex:1; background:var(--accent); border-radius:2px 2px 0 0; min-height:2px; position:relative; }
+  .day-bar:hover { background:var(--green); }
+  .day-label { font-size:.65rem; color:var(--muted); text-align:center; margin-top:4px; }
+  .badge { display:inline-block; padding:.15rem .5rem; border-radius:4px; font-size:.7rem; font-weight:600; }
+  .badge-green { background:#065f46; color:var(--green); }
+  .badge-yellow { background:#713f12; color:var(--yellow); }
+  .note { background:#1e293b; border-left:3px solid var(--accent); padding:.75rem 1rem; border-radius:0 8px 8px 0; font-size:.8rem; color:var(--muted); margin-bottom:1.5rem; }
+  .note strong { color:var(--text); }
+  .refresh { font-size:.75rem; color:var(--muted); text-align:right; margin-top:1rem; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .no-data { text-align:center; padding:3rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Traffic Dashboard</h1>
+  <h2>SaaS Founder's Claude Pack — privacy-first analytics</h2>
+  <div class="note">
+    <strong>How this works:</strong> Data is stored in <em>your</em> browser's localStorage. No cookies, no external services, no accounts. Each visitor's browser tracks its own pageviews. This dashboard shows <strong>your</strong> browsing data — a sample of real visitor patterns. For full accuracy, check this page from different devices/browsers.
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="section">
+    <h3>Pages (by views)</h3>
+    <div id="pages-table"></div>
+  </div>
+  <div class="section">
+    <h3>Referrers</h3>
+    <div id="refs-table"></div>
+  </div>
+  <div class="section">
+    <h3>Daily Trend</h3>
+    <div id="daily-chart"></div>
+  </div>
+  <div class="section">
+    <h3>UTM Campaigns</h3>
+    <div id="utms-table"></div>
+  </div>
+  <div class="section">
+    <h3>Recent Pageviews</h3>
+    <div id="recent-table"></div>
+  </div>
+  <p class="refresh">Auto-refreshes every 30s | <a href="/saas-founder-claude-pack/">Back to product</a></p>
+</div>
+<script>
+(function(){
+  var SUMMARY_KEY = '_sa_pv_summary';
+  var RAW_KEY = '_sa_pv_raw';
+
+  function el(id){ return document.getElementById(id); }
+
+  function render(){
+    var s, raw;
+    try { s = JSON.parse(localStorage.getItem(SUMMARY_KEY) || '{}'); } catch(e){ s = {}; }
+    try { raw = JSON.parse(localStorage.getItem(RAW_KEY) || '[]'); } catch(e){ raw = []; }
+
+    var total = s.total || 0;
+    var pages = s.pages || {};
+    var refs = s.refs || {};
+    var utms = s.utms || {};
+    var days = s.days || {};
+    var first = s.first_ts ? s.first_ts.slice(0,10) : '—';
+    var last  = s.last_ts  ? s.last_ts.slice(0,16).replace('T',' ') : '—';
+
+    // KPIs
+    var pageCount = Object.keys(pages).length;
+    var refCount  = Object.keys(refs).length;
+    el('kpis').innerHTML =
+      '<div class="kpi"><div class="kpi-label">Total Pageviews</div><div class="kpi-value">'+total+'</div><div class="kpi-sub">Since '+first+'</div></div>'+
+      '<div class="kpi"><div class="kpi-label">Unique Pages</div><div class="kpi-value">'+pageCount+'</div><div class="kpi-sub">Last: '+last+'</div></div>'+
+      '<div class="kpi"><div class="kpi-label">Referrer Sources</div><div class="kpi-value">'+refCount+'</div><div class="kpi-sub">Unique domains</div></div>'+
+      '<div class="kpi"><div class="kpi-label">Data Freshness</div><div class="kpi-value" style="font-size:1.2rem;">localStorage</div><div class="kpi-sub">This browser only</div></div>';
+
+    // Pages table
+    var pageArr = [];
+    for (var p in pages) pageArr.push({path:p, count:pages[p]});
+    pageArr.sort(function(a,b){ return b.count - a.count; });
+    var maxPage = pageArr.length > 0 ? pageArr[0].count : 1;
+    var pageHTML = pageArr.length === 0 ? '<div class="empty">No data yet. Visit some pages to populate.</div>' :
+      '<table><tr><th>Path</th><th>Views</th><th>Share</th></tr>'+
+      pageArr.map(function(r){
+        var pct = ((r.count/total)*100).toFixed(1);
+        var w = ((r.count/maxPage)*100).toFixed(0);
+        return '<tr><td>'+r.path+'</td><td>'+r.count+'</td><td><div class="bar-wrap"><div class="bar" style="width:'+w+'%"></div><span class="bar-num">'+pct+'%</span></div></td></tr>';
+      }).join('')+'</table>';
+    el('pages-table').innerHTML = pageHTML;
+
+    // Referrers
+    var refArr = [];
+    for (var rf in refs) refArr.push({ref:rf, count:refs[rf]});
+    refArr.sort(function(a,b){ return b.count - a.count; });
+    var refHTML = refArr.length === 0 ? '<div class="empty">No referrer data yet.</div>' :
+      '<table><tr><th>Source</th><th>Views</th></tr>'+
+      refArr.map(function(r){ return '<tr><td>'+r.ref+'</td><td>'+r.count+'</td></tr>'; }).join('')+'</table>';
+    el('refs-table').innerHTML = refHTML;
+
+    // Daily chart
+    var dayArr = [];
+    for (var d in days) dayArr.push({day:d, count:days[d]});
+    dayArr.sort(function(a,b){ return a.day.localeCompare(b.day); });
+    var maxDay = dayArr.length > 0 ? Math.max.apply(null, dayArr.map(function(x){return x.count;})) : 1;
+    var dayHTML = dayArr.length === 0 ? '<div class="empty">No daily data yet.</div>' :
+      '<div class="day-chart">'+dayArr.map(function(r){
+        var h = Math.max(((r.count/maxDay)*100).toFixed(0), 2);
+        return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;"><div class="day-bar" style="height:'+h+'px;width:100%" title="'+r.day+': '+r.count+' views"></div><div class="day-label">'+r.day.slice(5)+'</div></div>';
+      }).join('')+'</div>';
+    el('daily-chart').innerHTML = dayHTML;
+
+    // UTMs
+    var utmHTML = '';
+    var utmKeys = Object.keys(utms);
+    if (utmKeys.length === 0){
+      utmHTML = '<div class="empty">No UTM-tagged visits yet. Add ?utm_source=... to URLs when sharing.</div>';
+    } else {
+      utmHTML = utmKeys.map(function(k){
+        var vals = utms[k];
+        var rows = [];
+        for (var v in vals) rows.push('<tr><td>'+k+'</td><td>'+v+'</td><td>'+vals[v]+'</td></tr>');
+        return '<table><tr><th>Param</th><th>Value</th><th>Views</th></tr>'+rows.join('')+'</table>';
+      }).join('<br>');
+    }
+    el('utms-table').innerHTML = utmHTML;
+
+    // Recent raw
+    var recent = raw.slice(-20).reverse();
+    var recentHTML = recent.length === 0 ? '<div class="empty">No pageviews recorded yet.</div>' :
+      '<table><tr><th>Time</th><th>Path</th><th>Referrer</th><th>UTM</th></tr>'+
+      recent.map(function(r){
+        var ts = r.ts ? r.ts.slice(0,19).replace('T',' ') : '?';
+        var utmStr = r.utm ? Object.keys(r.utm).map(function(k){return k+'='+r.utm[k];}).join(', ') : '—';
+        return '<tr><td>'+ts+'</td><td>'+r.path+'</td><td>'+(r.ref||'direct')+'</td><td>'+utmStr+'</td></tr>';
+      }).join('')+'</table>';
+    el('recent-table').innerHTML = recentHTML;
+  }
+
+  render();
+  setInterval(render, 30000);
+})();
+</script>
+<script src="analytics.js"></script>
+</body>
+</html>
