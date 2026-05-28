@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code for Solo SaaS Founders: 5 Commands That Actually Ship Product</title>
+<meta name="description" content="Stop wasting hours on deployment, SEO audits, and competitor research. These 5 Claude Code slash commands handle the grunt work so you can focus on building.">
+<meta name="keywords" content="Claude Code, SaaS founder, slash commands, Claude Code deployment, AI coding agent, automate SaaS, Claude Code commands">
+<meta property="og:title" content="Claude Code for Solo SaaS Founders: 5 Commands That Actually Ship Product">
+<meta property="og:description" content="Deploy, audit, research, review, and debug — 5 Claude Code commands that replace 20 hours of founder toil per week.">
+<meta property="og:url" content="https://ttcd77.github.io/saas-founder-claude-pack/blog.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-05-28T00:00:00Z">
+<meta property="article:author" content="Selfloom">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code for Solo SaaS Founders: 5 Commands That Actually Ship Product">
+<meta name="twitter:description" content="Deploy, audit, research, review, debug. All from your terminal.">
+<link rel="canonical" href="https://ttcd77.github.io/saas-founder-claude-pack/blog.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude Code for Solo SaaS Founders: 5 Commands That Actually Ship Product",
+  "description": "Stop wasting hours on deployment, SEO audits, and competitor research. These 5 Claude Code slash commands handle the grunt work.",
+  "author": { "@type": "Organization", "name": "Selfloom" },
+  "datePublished": "2026-05-28",
+  "dateModified": "2026-05-28",
+  "publisher": { "@type": "Organization", "name": "Selfloom" },
+  "mainEntityOfPage": "https://ttcd77.github.io/saas-founder-claude-pack/blog.html"
+}
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --surface: #141416;
+    --border: #27272a;
+    --text: #e4e4e7;
+    --text-muted: #a1a1aa;
+    --accent: #22c55e;
+    --accent-glow: rgba(34,197,94,0.15);
+    --code: #faf594;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  header.top-nav {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  header.top-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  header.top-nav a:hover { text-decoration: underline; }
+
+  article {
+    padding-bottom: 64px;
+  }
+
+  article h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  article h1 span { color: var(--accent); }
+
+  .byline {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  article h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 48px 0 16px;
+    letter-spacing: -0.01em;
+  }
+  article h2:first-of-type { margin-top: 0; }
+
+  article p {
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: var(--text);
+  }
+
+  article code {
+    background: var(--surface);
+    color: var(--code);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  article pre {
+    background: #0d0d10;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 20px 0 28px;
+    font-size: 13px;
+    line-height: 1.7;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+  article pre .prompt { color: var(--accent); }
+  article pre .comment { color: var(--text-muted); }
+  article pre .cmd { color: var(--code); }
+
+  .tip-box {
+    background: var(--accent-glow);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 28px 0;
+    font-size: 14px;
+  }
+  .tip-box strong { color: var(--accent); }
+
+  .cta-box {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    margin: 48px 0 24px;
+  }
+  .cta-box h3 { font-size: 22px; margin-bottom: 8px; }
+  .cta-box p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .cta-btn:hover { box-shadow: 0 0 24px var(--accent-glow); }
+
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    article h1 { font-size: 28px; }
+    article h2 { font-size: 20px; }
+    article p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="container">
+    <a href="index.html">&larr; Back to SaaS Founder's Claude Code Skill Pack</a>
+  </div>
+</header>
+
+<article>
+  <div class="container">
+    <h1>Claude Code for Solo SaaS Founders: <span>5 Commands That Actually Ship Product</span></h1>
+    <div class="byline">Published May 28, 2026 &middot; By Selfloom &middot; 7 min read</div>
+
+    <p>You're a solo founder. You write code, talk to customers, do marketing, manage infrastructure, track competitors, and somehow find time to eat. Every hour matters.</p>
+
+    <p><strong>Claude Code</strong> — Anthropic's AI coding agent that runs in your terminal — changes the game. But most founders are using it wrong. They're treating it like a smarter ChatGPT instead of what it really is: <strong>a programmable teammate that can execute entire workflows with a single slash command.</strong></p>
+
+    <p>I've built 10 custom slash commands for Claude Code that handle the repetitive, time-sucking parts of running a SaaS. Here are the 5 that save the most time.</p>
+
+    <h2>1. <code>/ship-fast</code> — Deploy Without DevOps</h2>
+
+    <p>Every solo founder knows the deployment ritual: check env vars aren't in git, run the build, run migrations, deploy, smoke test the homepage and API, confirm the URL. It's 5-7 manual steps that take 10 minutes — and you do it multiple times a week.</p>
+
+    <p><code>/ship-fast</code> turns all of that into one command. Claude Code checks your environment, runs your build, applies migrations, pushes to your chosen platform (Vercel, Railway, or Fly.io), tests the result, and reports the live URL. 38 seconds to production instead of 10 minutes of clicking around.</p>
+
+    <pre><span class="prompt">&gt; /ship-fast</span>
+
+<span class="comment">[1/5]</span> Checking env vars not in git... <span class="cmd">&#x2713; .env excluded, 12 vars present</span>
+<span class="comment">[2/5]</span> Running npm run build... <span class="cmd">&#x2713; Build succeeded (4.2s)</span>
+<span class="comment">[3/5]</span> Running database migrations... <span class="cmd">&#x2713; 3 migrations applied</span>
+<span class="comment">[4/5]</span> Deploying to Vercel... <span class="cmd">&#x2713; Deploy complete</span>
+<span class="comment">[5/5]</span> Smoke testing... <span class="cmd">&#x2713; Homepage 200, /api 200</span>
+
+<span class="cmd">Live: https://myapp.vercel.app</span>
+<span class="comment">Deploy took 38 seconds total.</span></pre>
+
+    <div class="tip-box">
+      <strong>Time saved:</strong> ~8 minutes per deploy × 3 deploys/week = ~2 hours/month.
+    </div>
+
+    <h2>2. <code>/audit-seo</code> — Find and Fix SEO Issues in Minutes</h2>
+
+    <p>SEO for SaaS founders is usually an afterthought. You ship the feature, write some copy, and hope Google figures it out. Then six months later you wonder why organic traffic is flat.</p>
+
+    <p><code>/audit-seo</code> takes any URL and runs a full technical SEO audit: title tag length and keyword position, meta description, heading hierarchy, canonical tags, OG tags, structured data, word count, internal links, and load performance. The output is a pass/fail table organized by urgency: <strong>Fix Now</strong>, <strong>This Week</strong>, and <strong>Nice to Have</strong>.</p>
+
+    <pre><span class="prompt">&gt; /audit-seo https://myapp.com</span>
+
+<span class="cmd">SEO Audit: https://myapp.com</span>
+
+<span class="cmd">Fix Now (3):</span>
+<span class="comment">&#x2717; Title tag too long (72 chars, keep under 60)</span>
+<span class="comment">&#x2717; H1 missing — add one with primary keyword</span>
+<span class="comment">&#x2717; No structured data (add JSON-LD Product schema)</span>
+
+<span class="cmd">This Week (5):</span>
+<span class="comment">! Meta description generic — rewrite with value prop</span>
+<span class="comment">! Page below 1,500 words — expand key sections</span>
+<span class="comment">! Missing OG image — add 1200x630 social card</span>
+<span class="comment">! Only 2 internal links — add 3-5 more</span>
+<span class="comment">! Load time 3.2s — optimize images, defer JS</span>
+
+<span class="cmd">Nice to Have (4):</span>
+<span class="comment">  Add FAQ schema for FAQ section</span>
+<span class="comment">  Add breadcrumb schema</span>
+<span class="comment">  Expand H2s for long-tail keywords</span>
+<span class="comment">  Add alt text to hero image</span></pre>
+
+    <div class="tip-box">
+      <strong>Time saved:</strong> ~45 minutes per audit vs. doing it manually. Run it on every new page.
+    </div>
+
+    <h2>3. <code>/research-competitor</code> — Know Your Market Without Manual Research</h2>
+
+    <p>Competitor research is one of those things every founder knows they should do but never has time for. You bookmark 5 competitor sites, check them every few weeks, and mostly forget.</p>
+
+    <p><code>/research-competitor</code> takes a list of competitor URLs and produces a structured intel report: pricing, positioning, feature comparison, recent changes, funding status, team size, GTM strategy, and strengths/weaknesses. It crawls what's publicly available and formats everything into a comparison matrix.</p>
+
+    <pre><span class="prompt">&gt; /research-competitor</span>
+
+<span class="comment">Analyzing 4 competitors...</span>
+
+<span class="cmd">Competitor Matrix:</span>
+
+<span class="cmd">competitor-a.com</span>
+<span class="comment">  Pricing: $29/mo Pro, $99/mo Business</span>
+<span class="comment">  Positioning: "Project management for remote teams"</span>
+<span class="comment">  Headcount: ~35 (LinkedIn)</span>
+<span class="comment">  Recent: Launched AI assistant feature (May 2026)</span>
+<span class="comment">  Strength: Brand recognition, content marketing</span>
+<span class="comment">  Weakness: Complex onboarding, 3-day trial</span>
+
+<span class="cmd">competitor-b.com</span>
+<span class="comment">  Pricing: $19/mo, freemium tier</span>
+<span class="comment">  Positioning: "Simple task management"</span>
+<span class="comment">  Headcount: ~12 (LinkedIn)</span>
+<span class="comment">  Recent: Raised $4M seed (April 2026)</span>
+<span class="comment">  Strength: Clean UX, low price point</span>
+<span class="comment">  Weakness: Limited integrations</span>
+
+<span class="cmd">Your Gap:</span>
+<span class="comment">  Underserved segment: Mid-market teams ($50-200/mo)</span>
+<span class="comment">  Feature gap: None of them offer real-time collaboration</span>
+<span class="comment">  Pricing gap: $29-$99 range has room for premium tier</span></pre>
+
+    <div class="tip-box">
+      <strong>Time saved:</strong> ~2 hours per competitor deep-dive. Run monthly to stay ahead.
+    </div>
+
+    <h2>4. <code>/weekly-review</code> — Stay Accountable as a Solo Founder</h2>
+
+    <p>When you work alone, there's no manager asking for status updates. No standup meetings. Nobody checking if you're actually making progress or just spinning your wheels. Weeks blur together.</p>
+
+    <p><code>/weekly-review</code> is a structured Friday check-in. Claude Code walks you through your metrics (MRR, WAU, churn), prompts you for wins and blockers, and compiles everything into a searchable memo. The ritual forces you to confront the numbers — good or bad — and commit to one clear priority for next week.</p>
+
+    <pre><span class="prompt">&gt; /weekly-review</span>
+
+<span class="cmd">Friday Review — Week 21, 2026</span>
+
+<span class="cmd">Numbers:</span>
+<span class="comment">MRR: $4,280 &#x2191; 12%</span>
+<span class="comment">WAU: 1,842 &#x2191; 8%</span>
+<span class="comment">Churn: 3 accounts (watch)</span>
+
+<span class="cmd">Wins (3):</span>
+<span class="comment">1. Shipped onboarding v2</span>
+<span class="comment">2. 2 new enterprise trials</span>
+<span class="comment">3. Blog post hit HN front page</span>
+
+<span class="cmd">Blockers (2):</span>
+<span class="comment">1. Payment failures on EU cards</span>
+<span class="comment">2. Need docs for new API endpoints</span>
+
+<span class="cmd">Next Week's ONE Thing:</span>
+<span class="comment">Fix EU payments — switch to Stripe Payment Intents</span>
+
+<span class="comment">Memo compiled &#x2192; weekly-review-2026-w21.md</span></pre>
+
+    <div class="tip-box">
+      <strong>Time saved:</strong> ~15 minutes structured vs. skipping it entirely. The value isn't time — it's <strong>not drifting for 3 months without realizing it.</strong>
+    </div>
+
+    <h2>5. <code>/debug-error</code> — Debug 10x Faster</h2>
+
+    <p>Solo founders don't have an on-call engineer. When something breaks, you're the one staring at the stack trace at 11pm. Most founders copy the error into ChatGPT and get back generic advice.</p>
+
+    <p><code>/debug-error</code> takes your error message and context (language, framework, what you were doing when it happened) and walks through a structured debugging process: reproduce the error, identify the root cause, generate a fix, verify the fix works, and suggest a regression test. It reads your actual codebase instead of giving textbook answers.</p>
+
+    <pre><span class="prompt">&gt; /debug-error</span>
+
+<span class="comment">Error: "Cannot read properties of undefined (reading 'map')"</span>
+<span class="comment">File: components/Dashboard.tsx:42</span>
+<span class="comment">Context: Happens on first load, then goes away on refresh</span>
+
+<span class="cmd">Step 1 — Reproduce:</span>
+<span class="comment">  Loading Dashboard with empty user state...</span>
+<span class="comment">  &#x2713; Reproduced. Error fires when userData is null on initial render.</span>
+
+<span class="cmd">Step 2 — Root Cause:</span>
+<span class="comment">  userData is fetched async via useEffect. On first render,</span>
+<span class="comment">  it's undefined. The component tries userData.items.map()</span>
+<span class="comment">  before the fetch completes.</span>
+
+<span class="cmd">Step 3 — Fix:</span>
+<span class="comment">  Add optional chaining: userData?.items?.map(...)</span>
+<span class="comment">  Or: Add a loading guard: if (!userData) return &lt;Skeleton /&gt;</span>
+
+<span class="cmd">Step 4 — Verify:</span>
+<span class="comment">  &#x2713; No error on initial render</span>
+<span class="comment">  &#x2713; Data loads correctly after fetch</span>
+<span class="comment">  &#x2713; No regression in related components</span></pre>
+
+    <div class="tip-box">
+      <strong>Time saved:</strong> ~10-30 minutes per bug vs. manual googling and trial-and-error.
+    </div>
+
+    <h2>How to Install Custom Slash Commands in Claude Code</h2>
+
+    <p>Claude Code stores custom commands in your project's <code>.claude/settings.json</code> file. Each command has a name, description, and the prompt that Claude Code executes when you invoke it.</p>
+
+    <p>Here's a minimal example:</p>
+
+    <pre>{
+  "customCommands": [
+    {
+      "name": "ship-fast",
+      "description": "One-command deploy to production",
+      "prompt": "I need to deploy my SaaS to production.\nFramework: Next.js\nDatabase: Supabase\nDeploy target: Vercel\n\n1. Check env vars not in git\n2. Run npm run build\n3. Run migrations\n4. Deploy via Vercel CLI\n5. Smoke test homepage + API\n6. Report live URL"
+    }
+  ]
+}</pre>
+
+    <p>The <strong>SaaS Founder's Claude Code Skill Pack</strong> includes all 10 commands pre-configured — you drop them into your settings file and they just work. The prompts are battle-tested: they include error handling, edge cases, and output formatting that generic prompts miss.</p>
+
+    <h2>These 5 Commands Are Just the Start</h2>
+
+    <p>Between these five commands alone, you can recover <strong>5-10 hours per week</strong> — time you're currently spending on deployment rituals, manual SEO checks, competitor stalking, unstructured weekly planning, and late-night debugging sessions.</p>
+
+    <p>The full pack includes 10 commands, 5 automation scripts (Bash scripts you can cron), and 15 research prompts for strategy work like idea validation, churn analysis, and pricing. It's a one-time purchase — no subscription, no upsells.</p>
+
+    <div class="cta-box">
+      <h3>Get All 30 Tools</h3>
+      <p>10 commands, 5 scripts, 15 strategy prompts. $14 one-time. Drop your email to get notified when it's live.</p>
+      <form action="https://formsubmit.co/hello@selfloom.ai" method="POST" style="display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;max-width:480px;margin:0 auto 12px;">
+        <input type="email" name="email" placeholder="your@email.com" required style="flex:1;min-width:200px;padding:14px 18px;font-size:15px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;">
+        <input type="hidden" name="_subject" value="Claude Pack Interest">
+        <input type="hidden" name="_next" value="https://ttcd77.github.io/saas-founder-claude-pack/thanks.html">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="cta-btn">Notify Me</button>
+      </form>
+      <p style="font-size:13px;color:var(--text-muted);">No spam. One email when it's ready.</p>
+    </div>
+
+    <p style="text-align:center;margin-top:24px;">
+      <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:600;">&larr; Back to the full pack details</a>
+      &nbsp;&middot;&nbsp;
+      <a href="command-lab.html" style="color:var(--accent);text-decoration:none;font-weight:600;">Try the free Command Lab &rarr;</a>
+    </p>
+  </div>
+</article>
+
+<footer>
+  <div class="container">
+    <p><strong>SaaS Founder's Claude Code Skill Pack</strong></p>
+    <p>These are templates and starting points, not professional advice. Your results depend on your own product, market, and execution.</p>
+    <p style="margin-top:12px;">&copy; 2026 Selfloom. Built for solo founders.</p>
+  </div>
+</footer>
+
+</body>
+</html>
