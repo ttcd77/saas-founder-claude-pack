@@ -661,12 +661,13 @@ This Week / Nice to Have</pre>
   </div>
 </footer>
 
+<script src="ko-fi-config.js"></script>
 <script>
-// KOFI ACTIVATION — paste your Ko-fi product link to turn all "Notify Me" forms into "Buy Now" buttons
+// Ko-fi activation: productLink comes from the SHARED ko-fi-config.js (one file for all pages)
 window.__KOFI_CONFIG__ = {
-  productLink: "",  // ← PASTE KO-FI PRODUCT LINK HERE (e.g., "https://ko-fi.com/s/XXXXX")
-  price: "$14",
-  label: "Buy Now — $14 on Ko-fi",
+  productLink: window.__KOFI_PRODUCT_LINK__ || "",
+  price: window.__KOFI_SHARED_PRICE__ || "$14",
+  label: window.__KOFI_SHARED_LABEL__ || "Buy Now — $14 on Ko-fi",
   utmParams: "utm_source=github_pages&utm_medium=website&utm_campaign=direct_buy"
 };
 </script>
