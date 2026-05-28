@@ -201,6 +201,63 @@
   .testimonial .quote { font-size: 16px; font-style: italic; color: var(--text); margin-bottom: 12px; }
   .testimonial .author { font-size: 14px; color: var(--text-muted); }
 
+  /* Demo terminals */
+  .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .demo-terminal {
+    background: #0d0d10;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .demo-terminal:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .demo-terminal .bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #1a1a20;
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-terminal .bar .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .demo-terminal .bar .dot.r { background: #ef4444; }
+  .demo-terminal .bar .dot.y { background: #eab308; }
+  .demo-terminal .bar .dot.g { background: #22c55e; }
+  .demo-terminal .bar .title {
+    flex: 1; text-align: center;
+    font-size: 11px; color: var(--text-muted);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .demo-terminal .body {
+    padding: 14px;
+    overflow-x: auto;
+  }
+  .demo-terminal .prompt { color: var(--accent); }
+  .demo-terminal .output { color: var(--text-muted); }
+  .demo-terminal .success { color: var(--accent); }
+  .demo-terminal .warn { color: #eab308; }
+  .demo-terminal .info { color: #60a5fa; }
+  .demo-terminal .hl { color: var(--code); }
+  .demo-terminal .cursor::after {
+    content: '';
+    display: inline-block;
+    width: 7px; height: 14px;
+    background: var(--accent);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
   /* FAQ */
   .faq-item { margin-bottom: 24px; }
   .faq-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
@@ -226,7 +283,7 @@
 
   @media (max-width: 768px) {
     .hero h1 { font-size: 30px; }
-    .stats, .sample-grid, .contents { grid-template-columns: 1fr; }
+    .stats, .sample-grid, .contents, .demo-grid { grid-template-columns: 1fr; }
     .hero { padding: 48px 0 40px; }
     section { padding: 40px 0; }
   }
@@ -237,6 +294,9 @@
 <!-- Hero -->
 <header class="hero">
   <div class="container">
+    <div style="margin-bottom: 16px;">
+      <a href="command-lab.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-size:14px;font-weight:600;border-radius:6px;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:var(--accent-glow);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 0 18px var(--accent-glow)'" onmouseout="this.style.boxShadow='none'">&rarr; Try the Interactive Command Lab &mdash; 10 prompts, free to explore</a>
+    </div>
     <div class="badge">For Solo SaaS Founders</div>
     <h1>Claude Code Commands That <span>Ship Your SaaS Faster</span></h1>
     <p class="subtitle">
@@ -424,6 +484,94 @@ This Week / Nice to Have</pre>
   </div>
 </section>
 
+<!-- See It In Action -->
+<section>
+  <div class="container">
+    <h2>See It In Action</h2>
+    <p class="section-sub">No Photoshop. These are the actual commands and scripts from the pack. Each one does real founder work in seconds.</p>
+    <div class="demo-grid">
+      <!-- Demo 1: ship-fast -->
+      <div class="demo-terminal">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="title">Claude Code — /ship-fast</span>
+        </div>
+        <div class="body">
+          <div><span class="prompt">&gt; /ship-fast</span><span class="cursor"></span></div>
+          <div>&nbsp;</div>
+          <div><span class="output">[1/5]</span> Checking env vars not in git...</div>
+          <div><span class="success">&#x2713;</span> <span class="output">.env excluded, 12 vars present</span></div>
+          <div><span class="output">[2/5]</span> Running npm run build...</div>
+          <div><span class="success">&#x2713;</span> <span class="output">Build succeeded (4.2s)</span></div>
+          <div><span class="output">[3/5]</span> Running database migrations...</div>
+          <div><span class="success">&#x2713;</span> <span class="output">3 migrations applied</span></div>
+          <div><span class="output">[4/5]</span> Deploying to Vercel...</div>
+          <div><span class="success">&#x2713;</span> <span class="output">Deploy complete</span></div>
+          <div><span class="output">[5/5]</span> Smoke testing...</div>
+          <div><span class="success">&#x2713;</span> <span class="output">Homepage 200, /api 200</span></div>
+          <div>&nbsp;</div>
+          <div><span class="success">&#x2713;</span> <span class="hl">Live: https://myapp.vercel.app</span></div>
+          <div><span class="output">Deploy took 38 seconds total.</span></div>
+        </div>
+      </div>
+      <!-- Demo 2: competitor-watch -->
+      <div class="demo-terminal">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="title">Terminal — competitor-watch.sh</span>
+        </div>
+        <div class="body">
+          <div><span class="prompt">$</span> ./competitor-watch.sh</div>
+          <div>&nbsp;</div>
+          <div><span class="output">Watching 4 competitors...</span></div>
+          <div>&nbsp;</div>
+          <div><span class="info">competitor-a.com</span></div>
+          <div><span class="success">&#x2713;</span> <span class="output">No changes</span></div>
+          <div><span class="info">competitor-b.com</span></div>
+          <div><span class="success">&#x2713;</span> <span class="output">No changes</span></div>
+          <div><span class="info">competitor-c.com/pricing</span></div>
+          <div><span class="warn">!</span> <span class="hl">PRICE CHANGE DETECTED</span></div>
+          <div><span class="output">  Pro plan: $29/mo &rarr; $39/mo</span></div>
+          <div><span class="output">  New "Enterprise" tier added</span></div>
+          <div><span class="info">competitor-d.com</span></div>
+          <div><span class="success">&#x2713;</span> <span class="output">No changes</span></div>
+          <div>&nbsp;</div>
+          <div><span class="output">Report saved to ./reports/2026-05-28.md</span></div>
+          <div><span class="output">1 alert generated. Check above.</span></div>
+        </div>
+      </div>
+      <!-- Demo 3: weekly-review -->
+      <div class="demo-terminal">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="title">Claude Code — /weekly-review</span>
+        </div>
+        <div class="body">
+          <div><span class="prompt">&gt; /weekly-review</span><span class="cursor"></span></div>
+          <div>&nbsp;</div>
+          <div><span class="output">Friday Review — Week 21, 2026</span></div>
+          <div>&nbsp;</div>
+          <div><span class="hl">MRR:</span> <span class="success">$4,280</span> <span class="success">&uarr; 12%</span></div>
+          <div><span class="hl">WAU:</span> <span class="output">1,842</span> <span class="success">&uarr; 8%</span></div>
+          <div><span class="hl">Churn:</span> <span class="output">3 accounts</span> <span class="warn">(watch)</span></div>
+          <div>&nbsp;</div>
+          <div><span class="info">Wins</span></div>
+          <div><span class="output">1. Shipped onboarding v2</span></div>
+          <div><span class="output">2. 2 new enterprise trials</span></div>
+          <div><span class="output">3. Blog post hit HN front page</span></div>
+          <div>&nbsp;</div>
+          <div><span class="warn">Blockers</span></div>
+          <div><span class="output">1. Payment failures on EU cards</span></div>
+          <div><span class="output">2. Need docs for new API endpoints</span></div>
+          <div>&nbsp;</div>
+          <div><span class="success">Next Week: Fix EU payments</span></div>
+          <div><span class="output">Memo compiled &rarr; weekly-review-2026-w21.md</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section>
   <div class="container">
@@ -462,6 +610,9 @@ This Week / Nice to Have</pre>
     </form>
     <p style="color: var(--text-muted); font-size: 13px; margin-top: 12px;">
       One-time purchase. Free updates as we add more commands. Drop your email and we'll let you know when it's ready.
+    </p>
+    <p style="color: var(--text-muted); font-size: 14px; margin-top: 16px;">
+      <a href="command-lab.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Or try our free Command Lab first &rarr;</a>
     </p>
   </div>
 </section>
