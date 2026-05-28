@@ -601,6 +601,7 @@
       <p>10 commands + 5 scripts + 15 prompts. Drop your email and we'll notify you when it's live.</p>
       <p class="explore-count" id="exploreCount">You've explored 0 of 10 commands...</p>
     </div>
+    <div class="kofi-replace">
     <form class="lead-banner-form" action="https://formsubmit.co/hello@selfloom.ai" method="POST">
       <input type="email" name="email" placeholder="your@email.com" required>
       <input type="hidden" name="_subject" value="Command Lab Interest - Claude Pack">
@@ -608,6 +609,7 @@
       <input type="hidden" name="_captcha" value="false">
       <button type="submit" class="btn-accent">Notify Me</button>
     </form>
+    </div>
     <button class="lead-dismiss" id="leadDismiss" title="Dismiss">&times;</button>
   </div>
 </div>
@@ -1335,5 +1337,14 @@ renderCommands();
 updateExploreCount();
 </script>
 
+<script>
+window.__KOFI_CONFIG__ = {
+  productLink: "",
+  price: "$14",
+  label: "Buy Now — $14 on Ko-fi",
+  utmParams: "utm_source=github_pages&utm_medium=website&utm_campaign=command_lab_cta"
+};
+</script>
+<script src="ko-fi-activation.js"></script>
 </body>
 </html>
