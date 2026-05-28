@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Command Lab — Interactive SaaS Founder Prompt Library</title>
+<meta name="description" content="Explore 10 Claude Code slash commands for solo SaaS founders. View full prompt templates, copy with one click, filter by category. Free lead magnet for the SaaS Founder's Claude Code Skill Pack.">
+<meta property="og:title" content="Claude Command Lab — 10 Free SaaS Founder Prompts">
+<meta property="og:description" content="Browse, search, and copy 10 battle-tested Claude Code slash commands for shipping, research, marketing, and operations.">
+<meta property="og:url" content="https://ttcd77.github.io/saas-founder-claude-pack/command-lab.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Command Lab — Interactive Prompt Library">
+<meta name="twitter:description" content="10 Claude Code slash commands for SaaS founders. Free to explore and copy.">
+<link rel="canonical" href="https://ttcd77.github.io/saas-founder-claude-pack/command-lab.html">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --surface: #141416;
+    --surface-hover: #1c1c1f;
+    --border: #27272a;
+    --text: #e4e4e7;
+    --text-muted: #a1a1aa;
+    --accent: #22c55e;
+    --accent-glow: rgba(34,197,94,0.15);
+    --accent-glow-strong: rgba(34,197,94,0.30);
+    --code: #faf594;
+    --red: #ef4444;
+    --blue: #60a5fa;
+    --orange: #f59e0b;
+    --purple: #a78bfa;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+  .logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .logo-text span { color: var(--accent); }
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .btn:hover { border-color: var(--text-muted); color: var(--text); }
+  .btn-accent {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+  .btn-accent:hover { box-shadow: 0 0 18px var(--accent-glow); color: #000; }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn-ghost:hover {
+    background: var(--accent-glow);
+    box-shadow: 0 0 18px var(--accent-glow);
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .header h1 span { color: var(--accent); }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Search & Filter */
+  .toolbar {
+    padding: 24px 0 0;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+    border-bottom: 1px solid var(--border);
+  }
+  .search-wrap {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 16px;
+    font-size: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-input:focus { border-color: var(--accent); }
+
+  .filter-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-bottom: 14px;
+  }
+  .filter-tab {
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .filter-tab:hover { border-color: var(--text-muted); color: var(--text); }
+  .filter-tab.active {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .filter-tab .count {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 12px 0 8px;
+    flex-wrap: wrap;
+  }
+  .stats-bar strong { color: var(--accent); font-weight: 600; }
+
+  /* Command Grid */
+  .commands-section {
+    padding: 24px 0 48px;
+  }
+  .commands-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cmd-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .cmd-card:hover { border-color: #3a3a3f; }
+  .cmd-card.expanded {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-glow);
+  }
+
+  .cmd-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .cmd-card-header:hover { background: var(--surface-hover); }
+
+  .cmd-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.05);
+  }
+  .cmd-icon.ship { color: var(--accent); background: var(--accent-glow); }
+  .cmd-icon.research { color: var(--blue); background: rgba(96,165,250,0.12); }
+  .cmd-icon.marketing { color: var(--orange); background: rgba(245,158,11,0.12); }
+  .cmd-icon.ops { color: var(--purple); background: rgba(167,139,250,0.12); }
+
+  .cmd-info { flex: 1; min-width: 0; }
+  .cmd-name {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    color: var(--accent);
+    margin-bottom: 2px;
+    letter-spacing: -0.01em;
+  }
+  .cmd-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .cmd-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .cmd-tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+  }
+  .cmd-tag.ship { background: var(--accent-glow); color: var(--accent); }
+  .cmd-tag.research { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .cmd-tag.marketing { background: rgba(245,158,11,0.12); color: var(--orange); }
+  .cmd-tag.ops { background: rgba(167,139,250,0.12); color: var(--purple); }
+
+  .cmd-chevron {
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .cmd-card.expanded .cmd-chevron { transform: rotate(180deg); }
+
+  /* Expanded prompt area */
+  .cmd-prompt {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 0 20px;
+  }
+  .cmd-card.expanded .cmd-prompt { display: block; }
+
+  .prompt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0 8px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .prompt-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .prompt-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .copy-btn.copied {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .share-link {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .share-link:hover { color: var(--text); border-color: var(--border); }
+
+  .prompt-codeblock {
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 8px 0 16px;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #d4d4d4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
+  }
+  .prompt-codeblock::-webkit-scrollbar { width: 6px; }
+  .prompt-codeblock::-webkit-scrollbar-track { background: transparent; }
+  .prompt-codeblock::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--text-muted);
+  }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state h3 { font-size: 18px; margin-bottom: 6px; color: var(--text); }
+  .empty-state p { font-size: 14px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1a2e1d;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 1000;
+    transition: transform 0.25s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Lead capture banner */
+  .lead-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-top: 2px solid var(--accent);
+    padding: 16px 24px;
+    z-index: 50;
+    display: none;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .lead-banner.visible {
+    display: block;
+    transform: translateY(0);
+  }
+  .lead-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .lead-banner-text {
+    flex: 1;
+    min-width: 200px;
+  }
+  .lead-banner-text strong {
+    font-size: 14px;
+    color: var(--text);
+  }
+  .lead-banner-text p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .lead-banner-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .lead-banner-form input[type="email"] {
+    padding: 10px 14px;
+    font-size: 13px;
+    background: #000;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    min-width: 200px;
+    transition: border-color 0.2s;
+  }
+  .lead-banner-form input[type="email"]:focus { border-color: var(--accent); }
+  .lead-banner-form input[type="email"]::placeholder { color: var(--text-muted); }
+  .lead-banner-form .btn-accent {
+    padding: 10px 18px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .lead-dismiss {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 4px;
+    line-height: 1;
+  }
+  .lead-dismiss:hover { color: var(--text); }
+  .explore-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  footer p + p { margin-top: 4px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 24px; }
+    .header-row { flex-direction: column; align-items: flex-start; }
+    .header-actions { width: 100%; }
+    .cmd-card-header { padding: 14px 16px; }
+    .prompt-codeblock { padding: 14px 16px; font-size: 11px; }
+    .lead-banner-inner { flex-direction: column; align-items: stretch; text-align: center; }
+    .lead-banner-form { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header-row">
+      <div class="logo-area">
+        <div class="logo-icon">&#9881;</div>
+        <div class="logo-text">Claude <span>Command Lab</span></div>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="shareLabBtn" title="Copy link to share">&#128279; Share this lab</button>
+        <a href="./" class="btn btn-ghost">&#8592; Back to pack</a>
+      </div>
+    </div>
+    <h1>10 Claude Code Commands <span>for SaaS Founders</span></h1>
+    <p class="subtitle">Browse, search, and copy full prompt templates. Free to explore. Click any command to expand the full prompt.</p>
+  </div>
+</header>
+
+<!-- Toolbar -->
+<div class="toolbar" id="toolbar">
+  <div class="container">
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search commands by name, description, or keyword..." autocomplete="off">
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-cat="all">All<span class="count">10</span></button>
+      <button class="filter-tab" data-cat="ship">Ship<span class="count">1</span></button>
+      <button class="filter-tab" data-cat="research">Research<span class="count">2</span></button>
+      <button class="filter-tab" data-cat="marketing">Marketing<span class="count">3</span></button>
+      <button class="filter-tab" data-cat="operations">Operations<span class="count">4</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Stats bar -->
+<div class="container">
+  <div class="stats-bar" id="statsBar">
+    Showing <strong id="visibleCount">10</strong> of 10 commands
+    &middot; <span id="exploredMsg">Explore a few to unlock a special offer</span>
+  </div>
+</div>
+
+<!-- Commands -->
+<section class="commands-section">
+  <div class="container">
+    <div class="commands-grid" id="commandsGrid">
+      <!-- Populated by JS -->
+    </div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-icon">&#128270;</div>
+      <h3>No commands match your search</h3>
+      <p>Try a different keyword or clear the filter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lead capture banner -->
+<div class="lead-banner" id="leadBanner">
+  <div class="lead-banner-inner">
+    <div class="lead-banner-text">
+      <strong>Liking these? Get all 30 items for $14</strong>
+      <p>10 commands + 5 scripts + 15 prompts. Drop your email and we'll notify you when it's live.</p>
+      <p class="explore-count" id="exploreCount">You've explored 0 of 10 commands...</p>
+    </div>
+    <form class="lead-banner-form" action="https://formsubmit.co/hello@selfloom.ai" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <input type="hidden" name="_subject" value="Command Lab Interest - Claude Pack">
+      <input type="hidden" name="_next" value="https://ttcd77.github.io/saas-founder-claude-pack/thanks.html">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit" class="btn-accent">Notify Me</button>
+    </form>
+    <button class="lead-dismiss" id="leadDismiss" title="Dismiss">&times;</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">&#10003; Copied!</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>Part of the <a href="./">SaaS Founder's Claude Code Skill Pack</a> &mdash; 30 AI tools for solo founders.</p>
+    <p>These are templates and starting points, not professional advice. &copy; 2026 Selfloom.</p>
+    <p style="margin-top:8px;"><a href="mailto:hello@selfloom.ai">hello@selfloom.ai</a></p>
+  </div>
+</footer>
+
+<script>
+// ──────────────────────────────────────────────
+// DATA: All 10 commands with real prompt content
+// ──────────────────────────────────────────────
+var commands = [
+  {
+    id: "ship-fast",
+    name: "/ship-fast",
+    description: "One-command deploy to Vercel, Railway, or Fly.io with build verification, migration run, and smoke testing.",
+    category: "ship",
+    tags: ["Deployment", "CI/CD"],
+    prompt: "I need to deploy my SaaS app to production. Here's my setup:\n\n" +
+      "- **Framework**: [Next.js / SvelteKit / Astro / Django / other]\n" +
+      "- **Database**: [PostgreSQL / Supabase / PlanetScale / SQLite / none]\n" +
+      "- **Current deploy target**: [Vercel / Railway / Fly.io / DigitalOcean / other]\n" +
+      "- **Environment variables**: [list or say \"use .env.local\"]\n\n" +
+      "Do the following:\n" +
+      "1. Check that all environment variables are set and not committed to git.\n" +
+      "2. Verify the build works locally (`npm run build` or equivalent).\n" +
+      "3. Run any pending database migrations.\n" +
+      "4. Deploy using the platform CLI. If no CLI login is present, guide me through login.\n" +
+      "5. After deploy, run a smoke test: hit the homepage, a logged-in page, and one API endpoint.\n" +
+      "6. Report the live URL and any warnings.\n\n" +
+      "If any step fails, stop and explain the exact error before proceeding."
+  },
+  {
+    id: "research-competitor",
+    name: "/research-competitor",
+    description: "Analyze any competitor's landing page — extracts positioning, pricing, features, social proof, and identifies exploitable weaknesses.",
+    category: "research",
+    tags: ["Competitive Intel", "Pricing"],
+    prompt: "Go to [COMPETITOR_URL] and extract the following structured intelligence:\n\n" +
+      "### 1. Positioning\n" +
+      "- Their one-line value proposition (the hero headline)\n" +
+      "- What problem do they claim to solve?\n" +
+      "- Who is their obvious target audience?\n\n" +
+      "### 2. Pricing\n" +
+      "- List every plan with price and billing cycle (monthly/annual).\n" +
+      "- What is the free tier or trial offering?\n" +
+      "- What is the \"anchor\" plan they want you to pick? (usually highlighted)\n" +
+      "- Hidden costs or add-ons beyond the listed prices.\n\n" +
+      "### 3. Features\n" +
+      "- Core features table (what they include per plan).\n" +
+      "- Any feature they brag about that others don't have.\n" +
+      "- Missing features you'd expect but they don't have (gaps = your opportunities).\n\n" +
+      "### 4. Social Proof\n" +
+      "- Logos they display, testimonials, case studies, star ratings.\n" +
+      "- Any specific numbers they cite (customers, revenue, uptime, etc).\n\n" +
+      "### 5. Calls-to-Action\n" +
+      "- Primary CTA (the big button): what does it say and where does it go?\n" +
+      "- Secondary CTAs: are there multiple paths (demo, trial, pricing)?\n\n" +
+      "### 6. Weaknesses & Opportunities\n" +
+      "- Confusing pricing, friction in signup, slow page load, missing integrations.\n" +
+      "- What can YOU do better based on this analysis?\n\n" +
+      "Output as a structured report with an executive summary at the top (3 bullet takeaways)."
+  },
+  {
+    id: "write-landing-page",
+    name: "/write-landing-page",
+    description: "Generate conversion-optimized landing page copy — hero, features, pricing, testimonials, FAQ, and bottom CTA in one shot.",
+    category: "marketing",
+    tags: ["Copywriting", "Conversion"],
+    prompt: "Write a landing page for my SaaS product. Here's the product brief:\n\n" +
+      "- **Product name**: [NAME]\n" +
+      "- **One-line pitch**: [what it does and why it matters]\n" +
+      "- **3 key features**: [feature 1], [feature 2], [feature 3]\n" +
+      "- **Target audience**: [who buys this]\n" +
+      "- **Pricing model**: [free / freemium / subscription / one-time]\n" +
+      "- **Standout advantage over competitors**: [one thing you do better]\n\n" +
+      "Generate the following sections as ready-to-use copy (not a template — write the actual copy):\n\n" +
+      "### Hero Section\n" +
+      "- Headline (under 12 words, benefit-driven)\n" +
+      "- Subheadline (one sentence, 20-30 words, addresses the pain point)\n" +
+      "- Primary CTA button text (3-5 words)\n" +
+      "- Secondary text under CTA (e.g., \"No credit card required\")\n\n" +
+      "### Social Proof Bar\n" +
+      "- 3 bullet-style snippets: \"Used by X companies\" / \"Y% faster\" / \"Z integrations\"\n\n" +
+      "### How It Works\n" +
+      "- 3-step visual flow. Each step gets: icon suggestion + 1-line description.\n\n" +
+      "### Features Section\n" +
+      "- For each of the 3 key features: feature name (2-4 words), 2-sentence description, specific benefit in parentheses.\n\n" +
+      "### Pricing Section\n" +
+      "- If subscription: 3 tiers with realistic price points and \"Most Popular\" highlight.\n" +
+      "- If one-time: single price with what's included.\n" +
+      "- If freemium: free plan vs paid plan comparison.\n\n" +
+      "### Testimonials (placeholder format)\n" +
+      "- 2 testimonial blocks with: name, role, company, quote.\n\n" +
+      "### FAQ\n" +
+      "- 4 questions covering: security, cancellation, support, migration.\n\n" +
+      "### Bottom CTA\n" +
+      "- Repeat the CTA with urgency.\n\n" +
+      "Rules:\n" +
+      "- No lorem ipsum. Use realistic fake content that sounds like a real SaaS.\n" +
+      "- No marketing-speak fluff. Write like a founder talking to another founder.\n" +
+      "- Target reading grade level: 8-9 (clear, direct, not dumbed down)."
+  },
+  {
+    id: "audit-seo",
+    name: "/audit-seo",
+    description: "Quick technical SEO audit of any page — title, meta, headings, schema, performance. Outputs a prioritized Fix Now / This Week / Nice to Have list.",
+    category: "marketing",
+    tags: ["SEO", "Technical"],
+    prompt: "Audit the SEO health of [PAGE_URL]. Fetch the page and run through this checklist:\n\n" +
+      "### 1. On-Page Basics\n" +
+      "- **Title tag**: Is it present? Length (should be 50-60 chars)? Does it include the primary keyword near the front?\n" +
+      "- **Meta description**: Present? Length (should be 120-155 chars)? Compelling and includes keyword?\n" +
+      "- **H1**: Exactly one H1? Does it match user search intent? Contains primary keyword?\n" +
+      "- **H2/H3 structure**: Logical hierarchy? Not skipping levels?\n\n" +
+      "### 2. Content Quality\n" +
+      "- **Word count**: If under 300 words, flag as thin content.\n" +
+      "- **Keyword usage**: Is the primary keyword in the first 100 words? In an H2? In the URL?\n" +
+      "- **Internal links**: Count them. Are there at least 2-3 linking to other relevant pages?\n" +
+      "- **External links**: Any? To authoritative sources?\n\n" +
+      "### 3. Technical\n" +
+      "- **URL structure**: Clean and readable? Contains keyword? No unnecessary parameters?\n" +
+      "- **Canonical tag**: Present and self-referencing?\n" +
+      "- **Open Graph tags**: og:title, og:description, og:image present?\n" +
+      "- **Schema markup**: Any structured data present? (Article, Product, FAQ, etc.)\n\n" +
+      "### 4. Performance (estimate from page content, note where tools needed)\n" +
+      "- Approximate page size based on fetched resources.\n" +
+      "- Flag if you detect heavy third-party scripts.\n\n" +
+      "### 5. Competitor Gap Check\n" +
+      "- Identify the primary keyword from the page content.\n" +
+      "- Suggest 3 related long-tail questions this page could also target.\n\n" +
+      "### Output Format\n" +
+      "A table with columns: **Check** | **Status (Pass/Fail/Warning)** | **Fix**. Followed by a prioritized action list: **Fix Now**, **Fix This Week**, **Nice to Have**."
+  },
+  {
+    id: "generate-changelog",
+    name: "/generate-changelog",
+    description: "Auto-generate a customer-facing changelog from git commits — filters internal noise, rewrites in user-friendly language.",
+    category: "operations",
+    tags: ["Git", "Customer Comms"],
+    prompt: "Generate a customer-facing changelog from my git commit history since the last release tag.\n\n" +
+      "### Instructions\n" +
+      "1. Get all commits since the most recent version tag (`git tag --sort=-v:refname | head -1` or look for the last `v*` tag).\n" +
+      "   If no tag exists, use commits from the last 30 days.\n" +
+      "2. Parse each commit message and categorize it:\n" +
+      "   - **New** (feat: or add:)\n" +
+      "   - **Improved** (improve: or perf: or refactor:)\n" +
+      "   - **Fixed** (fix: or bug:)\n" +
+      "   - **Changed** (breaking change, deprecated features)\n" +
+      "   - **Removed** (features/APIs removed)\n" +
+      "3. Filter out:\n" +
+      "   - Commits that are purely internal (chore:, ci:, test:, docs:, style:)\n" +
+      "   - Merge commits\n" +
+      "   - Commits with messages like \"fix typo\", \"wip\", \"tmp\"\n" +
+      "4. For each remaining commit, rewrite the message in user-friendly language:\n" +
+      "   - \"feat: add CSV export for analytics dashboard\" becomes \"You can now export analytics data as CSV\"\n" +
+      "   - \"fix: race condition in stripe webhook handler\" becomes \"Fixed an issue where some payments took longer than expected to process\"\n" +
+      "   - Start each line with a verb in present or past tense.\n" +
+      "   - Remove technical jargon that customers won't understand.\n\n" +
+      "### Output Format\n" +
+      "```markdown\n" +
+      "# Changelog — [Version or Date Range]\n\n" +
+      "## New\n- [User-friendly description]\n\n" +
+      "## Improved\n- ...\n\n" +
+      "## Fixed\n- ...\n\n" +
+      "---\n\n" +
+      "Have questions or feedback? Reply to this email or chat with us in-app.\n" +
+      "```\n\n" +
+      "### Rules\n" +
+      "- If a category has no items, omit it entirely (don't write \"None\").\n" +
+      "- If the total changelog has fewer than 3 items, say \"Minor updates and performance improvements\" instead.\n" +
+      "- Never include internal-only details like file paths, function names, or error codes."
+  },
+  {
+    id: "customer-interview",
+    name: "/customer-interview",
+    description: "Generate a customer discovery interview guide — structured with warm-up, context, pain points, and solution exploration. Mom Test compliant.",
+    category: "research",
+    tags: ["Discovery", "UX Research"],
+    prompt: "Generate a customer discovery interview guide for my SaaS product. Here's the context:\n\n" +
+      "- **Product**: [what it does, in one sentence]\n" +
+      "- **Stage**: [pre-launch / early users / post-PMF / scaling]\n" +
+      "- **What I'm trying to learn**: [pricing willingness / feature gaps / churn reasons / onboarding friction / use case expansion]\n" +
+      "- **Who I'm interviewing**: [role/title of interviewee]\n" +
+      "- **Interview length**: [15 / 30 / 45 / 60 minutes]\n\n" +
+      "### Interview Structure\n\n" +
+      "#### 1. Warm-Up (2-3 min, goal: build rapport)\n" +
+      "- 2-3 opening questions about their role and current workflow. No product mentions yet.\n\n" +
+      "#### 2. Context & Current Behavior (5-8 min, goal: understand their world)\n" +
+      "- 4-5 questions about how they currently solve the problem my product addresses.\n" +
+      "- Probe for: tools they use, manual workarounds, what frustrates them.\n" +
+      "- **The Mom Test rule**: Ask about specific past behavior, not hypothetical future behavior.\n" +
+      "  \"When was the last time you [did X]? Walk me through it.\"\n\n" +
+      "#### 3. Pain Points (8-10 min, goal: quantify the pain)\n" +
+      "- 3-4 questions digging into the cost of the current solution:\n" +
+      "  - Time cost: \"How many hours per week does this take?\"\n" +
+      "  - Money cost: \"What do you currently pay for tools in this area?\"\n" +
+      "  - Emotional cost: \"What's the most frustrating part of this workflow?\"\n" +
+      "- **Calibration question**: \"On a scale of 1-10, how big a priority is fixing this right now?\"\n\n" +
+      "#### 4. Solution Exploration (5-8 min, goal: test your value prop without pitching)\n" +
+      "- 3-4 questions that describe the problem (not your solution) and ask for reactions.\n" +
+      "- \"If you could wave a magic wand and fix one thing about [workflow], what would it be?\"\n" +
+      "- \"Have you tried any tools to solve this? What happened?\"\n" +
+      "- Only in the last 2 minutes: optionally describe your solution very briefly and ask \"What's your gut reaction?\"\n\n" +
+      "#### 5. Wrap-Up (2-3 min)\n" +
+      "- \"Who else should I talk to?\"\n" +
+      "- \"Is there anything I should have asked but didn't?\"\n\n" +
+      "### Rules for the Guide\n" +
+      "- Every question must be open-ended (no yes/no questions).\n" +
+      "- No leading questions that hint at your solution (\"Don't you hate that?\").\n" +
+      "- Include an interviewer note for each section: \"Listen for: [signal to watch for]\""
+  },
+  {
+    id: "pricing-calculator",
+    name: "/pricing-calculator",
+    description: "Calculate SaaS pricing — unit economics, freemium vs flat vs usage-based scenarios, break-even analysis, and price anchoring strategy.",
+    category: "operations",
+    tags: ["Pricing", "Finance"],
+    prompt: "Help me calculate the right pricing for my SaaS. Here's my business data:\n\n" +
+      "### Cost Structure (monthly unless noted)\n" +
+      "- Hosting/infrastructure: $[amount]\n" +
+      "- Third-party APIs/services: $[amount]\n" +
+      "- Domain, email, tools: $[amount]\n" +
+      "- Contractor/freelancer costs: $[amount]\n" +
+      "- Founder salary target: $[amount]\n" +
+      "- Marketing budget: $[amount]\n" +
+      "- Other fixed costs: $[amount]\n\n" +
+      "### Product Usage Data (real or estimated)\n" +
+      "- Current/estimated MAU (monthly active users): [number]\n" +
+      "- Current/estimated conversion rate (free → paid): [percentage]\n" +
+      "- Average revenue per paying user (if any): $[amount]\n" +
+      "- Monthly churn rate: [percentage]\n\n" +
+      "### Market Context\n" +
+      "- Top 3 competitors and their pricing:\n" +
+      "  1. [Competitor A] — $[price]/month\n" +
+      "  2. [Competitor B] — $[price]/month\n" +
+      "  3. [Competitor C] — $[price]/month\n" +
+      "- My differentiation: [one sentence]\n\n" +
+      "### Run These Calculations\n\n" +
+      "#### 1. Unit Economics\n" +
+      "- Cost per user (total costs / MAU)\n" +
+      "- Cost per paying user (total costs / paying users)\n" +
+      "- Monthly revenue needed to break even\n" +
+      "- Number of paying users needed at [X price point] to break even\n\n" +
+      "#### 2. Pricing Models to Compare\n" +
+      "Generate 3 scenarios:\n" +
+      "- **Scenario A: Freemium** — Free tier + 1-2 paid tiers. Calculate conversion rate needed.\n" +
+      "- **Scenario B: Flat Subscription** — Single price, free trial. Calculate what price hits break-even at current traffic.\n" +
+      "- **Scenario C: Usage-Based** — Pay per usage unit (API calls, seats, projects). Compare to fixed pricing.\n\n" +
+      "For each scenario, show:\n" +
+      "- Monthly recurring revenue at 100, 500, and 1000 customers\n" +
+      "- Months to break-even at current growth rate\n" +
+      "- 3-year revenue projection (with 5% monthly churn, 10% monthly growth)\n\n" +
+      "#### 3. Price Anchoring Strategy\n" +
+      "- Recommended \"decoy\" plan that makes the middle plan look best.\n" +
+      "- First-purchase discount strategy (annual vs monthly).\n" +
+      "- When to raise prices and how to grandfather existing customers.\n\n" +
+      "### Output\n" +
+      "A table comparing the 3 scenarios side-by-side, plus a final recommendation with reasoning."
+  },
+  {
+    id: "write-cold-email",
+    name: "/write-cold-email",
+    description: "Write a personalized cold outreach email — subject lines, body under 120 words, follow-up draft, and A/B test variants. No generic fluff.",
+    category: "marketing",
+    tags: ["Outreach", "Sales"],
+    prompt: "Write a cold outreach email. Here's the situation:\n\n" +
+      "- **Recipient name & role**: [name, title, company]\n" +
+      "- **What I know about them**: [e.g., \"recently posted about scaling their engineering team\", \"spoke at MicroConf 2024\", \"their company just raised Series A\"]\n" +
+      "- **My product**: [one sentence description]\n" +
+      "- **What I'm offering**: [e.g., free trial, demo, partnership, guest post, interview request]\n" +
+      "- **My ask**: [what specific action they should take — schedule call, reply, try product]\n" +
+      "- **Tone**: [casual / professional / technical / warm]\n\n" +
+      "### Email Rules\n" +
+      "- **Subject line**: Under 50 characters. No \"Quick question\" or \"Following up\". Personalized and relevant to them.\n" +
+      "- **Opening line**: Reference something specific about THEM (not you). Their tweet, their blog post, their product update, their podcast appearance.\n" +
+      "- **Problem statement**: In 1 sentence, name the problem my product solves — from their perspective.\n" +
+      "- **Credibility signal**: One short line that proves I'm legit (e.g., \"We help 200+ engineering teams cut deploy time by 40%\"). If I don't have numbers, use a specific customer example.\n" +
+      "- **The ask**: Exactly one clear CTA. Not \"let me know if you're interested\" — something specific like \"Would you be open to a 15-minute call next Tuesday or Wednesday?\"\n" +
+      "- **Length**: Under 120 words total. Busy people skim.\n\n" +
+      "### Deliverables\n" +
+      "1. **Subject line** options (3 variations, pick best)\n" +
+      "2. **Email body** — the full draft\n" +
+      "3. **Follow-up email** — to send 5 days later if no reply (under 80 words, no guilt-tripping)\n" +
+      "4. **A/B test variants** — 2 alternative opening lines to test\n\n" +
+      "### Anti-Patterns to Avoid\n" +
+      "- No \"I know you're busy\" (they know, it's filler)\n" +
+      "- No \"We're a leading platform\" (says nothing)\n" +
+      "- No fake urgency (\"This offer expires Friday\")\n" +
+      "- No generic compliments (\"I love what you're doing at [Company]\")"
+  },
+  {
+    id: "debug-error",
+    name: "/debug-error",
+    description: "Structured debugging workflow — parse error, reproduce, form ONE root cause hypothesis, propose fix, and add prevention.",
+    category: "operations",
+    tags: ["Debugging", "Engineering"],
+    prompt: "I'm debugging an error in my SaaS app. Here's what I have:\n\n" +
+      "### Error Information\n```\n[PASTE ERROR LOG HERE]\n```\n\n" +
+      "### Context\n" +
+      "- **Tech stack**: [Next.js / Express / Django / Rails / etc.]\n" +
+      "- **When it happens**: [on page load / after clicking X / during deploy / intermittently / always]\n" +
+      "- **Recent changes**: [deployed new feature / updated dependency / changed config / nothing obvious]\n" +
+      "- **Environment**: [local dev / staging / production]\n\n" +
+      "### Debugging Workflow (Execute in Order)\n\n" +
+      "#### Phase 1: Understand the Error\n" +
+      "1. Parse the stack trace. Identify:\n" +
+      "   - The exact error type (e.g., TypeError, AuthError, DatabaseError)\n" +
+      "   - The file and line where the error originated (not where it was caught)\n" +
+      "   - Whether the error is in my code or a dependency\n" +
+      "2. If the error message is cryptic, explain what it actually means in plain English.\n\n" +
+      "#### Phase 2: Reproduce\n" +
+      "1. Based on the context I provided, describe the exact steps to reproduce this error.\n" +
+      "2. If something is missing to reproduce, tell me what you need.\n\n" +
+      "#### Phase 3: Root Cause Hypothesis\n" +
+      "1. Write ONE hypothesis for the root cause. Not multiple — commit to the most likely one.\n" +
+      "2. State what you'd check to confirm or rule it out.\n\n" +
+      "#### Phase 4: Fix\n" +
+      "1. Propose a specific fix. Show the code change (before/after).\n" +
+      "2. Explain WHY this fix addresses the root cause, not just the symptom.\n" +
+      "3. Flag any side effects or risks of this fix.\n\n" +
+      "#### Phase 5: Prevention\n" +
+      "1. What test should I add to catch this before it reaches production?\n" +
+      "2. Is there a broader pattern here? (e.g., \"Every time we add a new API endpoint, we forget to handle X\")\n\n" +
+      "### Rules\n" +
+      "- If the error log is incomplete, ask for what's missing before hypothesizing.\n" +
+      "- Don't shotgun solutions. One hypothesis → one fix.\n" +
+      "- If the fix requires a dependency upgrade, check breaking changes first."
+  },
+  {
+    id: "weekly-review",
+    name: "/weekly-review",
+    description: "Friday founder review — metrics (MRR, WAU, churn), wins, blockers, next week's ONE thing, and reflection. Compiles into a structured memo.",
+    category: "operations",
+    tags: ["Accountability", "Planning"],
+    prompt: "Run a weekly founder review with me. Ask these questions one section at a time, wait for my answer before moving to the next section.\n\n" +
+      "### Section 1: Metrics (the numbers that matter)\n" +
+      "Pause after each question for my response:\n\n" +
+      "1. **MRR**: What's your current monthly recurring revenue? Up or down from last week?\n" +
+      "2. **Active users**: Weekly active users (WAU)? Trend?\n" +
+      "3. **Churn**: How many customers canceled this week? Why?\n" +
+      "4. **New trials/signups**: How many new signups or trial starts?\n" +
+      "5. **One number that worries you**: What metric makes you uncomfortable right now?\n\n" +
+      "### Section 2: Wins\n" +
+      "1. What went well this week? (personal, product, or business)\n" +
+      "2. What's one thing you shipped?\n" +
+      "3. What positive customer signal did you get? (email, review, referral, renewal)\n\n" +
+      "### Section 3: Blockers & Bottlenecks\n" +
+      "1. What's stuck? (technical, legal, dependency on someone else)\n" +
+      "2. What decision are you avoiding?\n" +
+      "3. What costs too much time for the value?\n\n" +
+      "### Section 4: Next Week's ONE Thing\n" +
+      "1. If next week you could only accomplish ONE thing, what should it be?\n" +
+      "2. What's the first concrete action on Monday morning to move that forward?\n\n" +
+      "### Section 5: Reflection\n" +
+      "1. What did you believe 3 months ago that you no longer believe?\n" +
+      "2. What's one process that broke down this week? (deploy, onboarding, support)\n" +
+      "3. On a scale of 1-10, how's your founder energy? (1 = burning out, 10 = unstoppable)\n\n" +
+      "### After the Review\n" +
+      "Compile my answers into a structured weekly memo format:\n\n" +
+      "```\n# Weekly Review — [Date]\n\n" +
+      "## Metrics at a Glance\n" +
+      "| Metric | Value | Trend |\n" +
+      "|--------|-------|-------|\n" +
+      "| MRR | ... | ↑/↓/→ |\n" +
+      "| ... | ... | ... |\n\n" +
+      "## 3 Wins\n1. ...\n2. ...\n3. ...\n\n" +
+      "## 3 Blockers\n1. ...\n2. ...\n3. ...\n\n" +
+      "## Next Week's Focus\n" +
+      "[One thing] — first action: [concrete step]\n\n" +
+      "## Founder's Note\n" +
+      "[1-2 sentences from the reflection, written in my voice]\n```\n\n" +
+      "Save this to a file or just display it for me to copy."
+  }
+];
+
+// ──────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────
+var activeFilter = "all";
+var searchQuery = "";
+var exploredCommands = {};
+var leadDismissed = false;
+
+function categoryLabel(cat) {
+  switch (cat) {
+    case "ship": return "ship";
+    case "research": return "research";
+    case "marketing": return "marketing";
+    case "operations": return "operations";
+  }
+  return cat;
+}
+
+// ──────────────────────────────────────────────
+// RENDER
+// ──────────────────────────────────────────────
+function getFilteredCommands() {
+  return commands.filter(function(c) {
+    var matchCat = activeFilter === "all" || c.category === activeFilter;
+    if (!matchCat) return false;
+    if (!searchQuery.trim()) return true;
+    var q = searchQuery.toLowerCase();
+    return c.name.toLowerCase().indexOf(q) !== -1 ||
+           c.description.toLowerCase().indexOf(q) !== -1 ||
+           c.tags.some(function(t) { return t.toLowerCase().indexOf(q) !== -1; }) ||
+           c.prompt.toLowerCase().indexOf(q) !== -1;
+  });
+}
+
+function renderCommands() {
+  var filtered = getFilteredCommands();
+  var grid = document.getElementById("commandsGrid");
+  var empty = document.getElementById("emptyState");
+  var visibleCount = document.getElementById("visibleCount");
+
+  visibleCount.textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+
+  var html = "";
+  for (var i = 0; i < filtered.length; i++) {
+    (function(cmd) {
+      var iconClass = categoryLabel(cmd.category);
+      var tagsHtml = "";
+      for (var j = 0; j < cmd.tags.length; j++) {
+        tagsHtml += '<span class="cmd-tag ' + iconClass + '">' + cmd.tags[j] + '</span>';
+      }
+
+      html += '<div class="cmd-card" id="card-' + cmd.id + '" data-id="' + cmd.id + '">';
+      html += '  <div class="cmd-card-header" onclick="toggleCommand(\'' + cmd.id + '\')">';
+      html += '    <div class="cmd-icon ' + iconClass + '">';
+      // Icon emoji per category
+      switch (iconClass) {
+        case "ship": html += '&#128640;'; break;
+        case "research": html += '&#128269;'; break;
+        case "marketing": html += '&#128227;'; break;
+        case "operations": html += '&#9881;'; break;
+        default: html += '&#128218;';
+      }
+      html += '    </div>';
+      html += '    <div class="cmd-info">';
+      html += '      <div class="cmd-name">' + cmd.name + '</div>';
+      html += '      <div class="cmd-desc">' + cmd.description + '</div>';
+      html += '      <div class="cmd-tags">' + tagsHtml + '</div>';
+      html += '    </div>';
+      html += '    <div class="cmd-chevron">&#9660;</div>';
+      html += '  </div>';
+      html += '  <div class="cmd-prompt">';
+      html += '    <div class="prompt-header">';
+      html += '      <span class="prompt-label">&#128196; Full Prompt Template</span>';
+      html += '      <div class="prompt-actions">';
+      html += '        <button class="copy-btn" id="copyBtn-' + cmd.id + '" onclick="event.stopPropagation(); copyPrompt(\'' + cmd.id + '\')">&#128203; Copy prompt</button>';
+      html += '        <a class="share-link" href="#' + cmd.id + '" onclick="event.stopPropagation(); copyShareLink(\'' + cmd.id + '\')" title="Copy link to this command">&#128279; Share</a>';
+      html += '      </div>';
+      html += '    </div>';
+      // Escape HTML entities in prompt for display
+      var safePrompt = cmd.prompt
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      html += '    <pre class="prompt-codeblock"><code>' + safePrompt + '</code></pre>';
+      html += '  </div>';
+      html += '</div>';
+    })(filtered[i]);
+  }
+  grid.innerHTML = html;
+
+  // Restore expanded state from URL hash
+  restoreHash();
+}
+
+function toggleCommand(id) {
+  var card = document.getElementById("card-" + id);
+  if (!card) return;
+  var wasExpanded = card.classList.contains("expanded");
+  card.classList.toggle("expanded");
+
+  if (!wasExpanded) {
+    // Mark as explored
+    exploredCommands[id] = true;
+    updateLeadBanner();
+    updateExploreCount();
+
+    // Update URL hash
+    if (history.pushState) {
+      history.pushState(null, null, "#" + id);
+    }
+  } else {
+    // Remove hash if this command was the one in the hash
+    if (window.location.hash === "#" + id) {
+      if (history.pushState) {
+        history.pushState(null, null, window.location.pathname);
+      }
+    }
+  }
+}
+
+function restoreHash() {
+  var hash = window.location.hash.replace("#", "");
+  if (hash) {
+    var card = document.getElementById("card-" + hash);
+    if (card) {
+      card.classList.add("expanded");
+      exploredCommands[hash] = true;
+      updateLeadBanner();
+      updateExploreCount();
+      // Scroll to the card
+      setTimeout(function() {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+  }
+}
+
+// ──────────────────────────────────────────────
+// COPY
+// ──────────────────────────────────────────────
+function copyPrompt(id) {
+  var cmd = findCommandById(id);
+  if (!cmd) return;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(cmd.prompt).then(function() {
+      showCopyFeedback("copyBtn-" + id);
+      showToast("Copied!");
+    }).catch(function() {
+      fallbackCopy(cmd.prompt, "copyBtn-" + id);
+    });
+  } else {
+    fallbackCopy(cmd.prompt, "copyBtn-" + id);
+  }
+}
+
+function fallbackCopy(text, btnId) {
+  var textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand("copy");
+    showCopyFeedback(btnId);
+    showToast("Copied!");
+  } catch (e) {
+    showToast("Copy failed — please select and copy manually");
+  }
+  document.body.removeChild(textarea);
+}
+
+function copyShareLink(id) {
+  var url = window.location.origin + window.location.pathname + "#" + id;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      showToast("Link copied! Share this command directly.");
+    });
+  } else {
+    var textarea = document.createElement("textarea");
+    textarea.value = url;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      showToast("Link copied! Share this command directly.");
+    } catch (e) {
+      showToast("Copy failed — please copy the URL from the address bar");
+    }
+    document.body.removeChild(textarea);
+  }
+}
+
+function showCopyFeedback(btnId) {
+  var btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.classList.add("copied");
+  btn.innerHTML = "&#10003; Copied!";
+  setTimeout(function() {
+    btn.classList.remove("copied");
+    btn.innerHTML = "&#128203; Copy prompt";
+  }, 2000);
+}
+
+function findCommandById(id) {
+  for (var i = 0; i < commands.length; i++) {
+    if (commands[i].id === id) return commands[i];
+  }
+  return null;
+}
+
+// ──────────────────────────────────────────────
+// TOAST
+// ──────────────────────────────────────────────
+var toastTimer = null;
+function showToast(msg) {
+  var toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.classList.add("show");
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() {
+    toast.classList.remove("show");
+  }, 2200);
+}
+
+// ──────────────────────────────────────────────
+// LEAD CAPTURE BANNER
+// ──────────────────────────────────────────────
+function updateExploreCount() {
+  var count = Object.keys(exploredCommands).length;
+  var el = document.getElementById("exploreCount");
+  if (el) {
+    el.textContent = "You've explored " + count + " of 10 commands...";
+  }
+
+  var msg = document.getElementById("exploredMsg");
+  if (msg && count >= 3) {
+    msg.innerHTML = '<strong style="color:var(--accent);">' + count + ' commands explored!</strong> Check out the special offer below.';
+  }
+}
+
+function updateLeadBanner() {
+  if (leadDismissed) return;
+  var count = Object.keys(exploredCommands).length;
+  var banner = document.getElementById("leadBanner");
+  if (count >= 3) {
+    banner.classList.add("visible");
+  }
+}
+
+document.getElementById("leadDismiss").addEventListener("click", function() {
+  leadDismissed = true;
+  document.getElementById("leadBanner").classList.remove("visible");
+});
+
+// ──────────────────────────────────────────────
+// SEARCH & FILTER
+// ──────────────────────────────────────────────
+document.getElementById("searchInput").addEventListener("input", function() {
+  searchQuery = this.value;
+  renderCommands();
+});
+
+document.getElementById("filterTabs").addEventListener("click", function(e) {
+  if (!e.target.classList.contains("filter-tab")) return;
+  var tabs = document.querySelectorAll(".filter-tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove("active");
+  }
+  e.target.classList.add("active");
+  activeFilter = e.target.dataset.cat;
+  searchQuery = document.getElementById("searchInput").value;
+  renderCommands();
+});
+
+// ──────────────────────────────────────────────
+// SHARE LAB BUTTON
+// ──────────────────────────────────────────────
+document.getElementById("shareLabBtn").addEventListener("click", function() {
+  var url = window.location.origin + window.location.pathname;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      showToast("Lab link copied! Share it with fellow founders.");
+    });
+  } else {
+    var textarea = document.createElement("textarea");
+    textarea.value = url;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    showToast("Lab link copied! Share it with fellow founders.");
+  }
+});
+
+// ──────────────────────────────────────────────
+// KEYBOARD SHORTCUT: Escape collapses all
+// ──────────────────────────────────────────────
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    var expanded = document.querySelectorAll(".cmd-card.expanded");
+    for (var i = 0; i < expanded.length; i++) {
+      expanded[i].classList.remove("expanded");
+    }
+    if (history.pushState) {
+      history.pushState(null, null, window.location.pathname);
+    }
+  }
+});
+
+// ──────────────────────────────────────────────
+// HASH CHANGE (back/forward navigation)
+// ──────────────────────────────────────────────
+window.addEventListener("hashchange", function() {
+  // Collapse all first
+  var expanded = document.querySelectorAll(".cmd-card.expanded");
+  for (var i = 0; i < expanded.length; i++) {
+    expanded[i].classList.remove("expanded");
+  }
+  restoreHash();
+});
+
+// ──────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────
+renderCommands();
+updateExploreCount();
+</script>
+
+</body>
+</html>
