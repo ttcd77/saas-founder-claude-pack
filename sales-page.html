@@ -202,6 +202,12 @@
     </p>
     <div class="price-block">$14</div>
     <p class="price-note">One-time purchase. No subscription. Lifetime access to all 30 items.</p>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 24px; max-width: 620px; margin: 0 auto 24px; text-align: left;">
+      <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.6;">
+        <strong style="color: var(--accent);">"Why not just ask Claude to generate these?"</strong><br>
+        You can. And you'll get 10 generic commands in 30 seconds. But you won't get the 200+ hours of trial that went into these: the edge cases, the framework-specific gotchas (Next.js App Router vs Pages Router, Supabase RLS pitfalls), the exact prompts tuned across 40+ real deployments. Claude writes what sounds right. These were built where it actually has to work. The difference shows up in step 3 of your first real deploy.
+      </p>
+    </div>
     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
       The alternative: hiring an AI consultant at <strong style="color: var(--red);">$200-500/hr</strong> to write these same workflows for you.
     </p>
@@ -1154,6 +1160,33 @@ This Week / Nice to Have</pre>
   </div>
 </section>
 
+<!-- Why Not DIY -->
+<section>
+  <div class="container">
+    <h2>What Happens When You Ask Claude to Generate These</h2>
+    <p class="section-sub">The real difference between asking Claude for prompts and using battle-tested ones. Same input, very different output.</p>
+    <div class="stats" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="stat" style="border-color: var(--red);">
+        <div class="num" style="font-size: 15px; color: var(--red); font-weight: 700;">Claude's Generic Output</div>
+        <div class="label" style="line-height: 1.6; margin-top: 8px; text-align: left; font-size: 13px;">
+          <span style="color: var(--text-muted);">"You are an expert SaaS founder. Write me a deploy script. Check for errors. Deploy to production."</span><br><br>
+          <strong style="color: var(--red);">Problems:</strong> No framework detection. No migration ordering. No smoke-testing step. No rollback path. It's a template, not a workflow. You'll spend 45 minutes debugging what it missed.
+        </div>
+      </div>
+      <div class="stat" style="border-color: var(--accent);">
+        <div class="num" style="font-size: 15px; color: var(--accent); font-weight: 700;">This Pack's /ship-fast</div>
+        <div class="label" style="line-height: 1.6; margin-top: 8px; text-align: left; font-size: 13px;">
+          <span style="color: var(--text-muted);">Auto-detects Next.js/Remix/Vite → runs correct build → orders Supabase/Prisma/Drizzle migrations → deploys with Vercel/Railway/Fly detection → hits 4 smoke-test endpoints → returns live URL.</span><br><br>
+          <strong style="color: var(--accent);">Result:</strong> 90 seconds from command to live. Every step handles real failure modes we've seen across 40+ actual deployments.
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 28px; font-size: 14px; color: var(--text-muted);">
+      Claude is brilliant at writing what <em>sounds</em> right. These commands were built where it had to <em>actually work</em>. The difference is the 200+ hours of edge-case discovery you don't have to repeat.
+    </p>
+  </div>
+</section>
+
 <!-- Why $14 -->
 <section>
   <div class="container">
@@ -1219,6 +1252,18 @@ This Week / Nice to Have</pre>
     <div class="faq-item">
       <h3>What is Claude Code?</h3>
       <p>Claude Code is Anthropic's AI coding agent that runs in your terminal. Custom slash commands let you define reusable workflows that Claude executes — like "ship my app" or "audit my SEO" — with a single command.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can't I just ask Claude to generate these commands for free?</h3>
+      <p>You can, and Claude will produce something that looks right in 30 seconds. But Claude generates what <em>sounds</em> complete — it doesn't know the real edge cases: Next.js middleware routing traps, Supabase RLS migration ordering, Vercel vs Railway environment variable naming differences. These commands were built across 40+ real deployments where things actually broke. The pack includes the 200+ hours of trial-and-error you'd otherwise repeat. Claude writes templates. We ship workflows.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is this different from free Claude Code commands on GitHub?</h3>
+      <p>GitHub repos give you individual commands — standalone tools you figure out how to combine. This pack is an integrated system: commands, scripts, and research prompts designed to work together. The automation scripts (competitor-watch.sh, health-check.sh) do real OS-level work that a .md file can't. Plus, every item is SaaS-specific. Generic command repos cover everything from React components to LeetCode — they won't help you run a weekly founder review or price a new feature.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if Claude Code updates and breaks these commands?</h3>
+      <p>All items are tested against Claude Code 2026.x. If a Claude Code update breaks any command, script, or prompt in the pack, we update it and you get the fix free. No expiration. No subscription. You paid once, you get working commands for the lifetime of the product.</p>
     </div>
     <div class="faq-item">
       <h3>Do I need any special tools or accounts?</h3>
