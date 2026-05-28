@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ttcd77.github.io/saas-founder-claude-pack/sitemap.xml
