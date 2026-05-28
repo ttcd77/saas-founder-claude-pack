@@ -1,0 +1,13 @@
+﻿# Full pack source — paid product, not in public repo
+commands/
+scripts/
+prompts/
+pack-index.md
+full-pack.md
+build-full-pack.ps1
+gen-full-pack.ps1
+
+# Workspace
+.idea/
+.vscode/
+*.zip
